@@ -149,112 +149,112 @@ sudo vim /etc/default/keyboard
 
 # --------------------------------------------------------------
 
-== ostatní software= Nový návod (Lubuntu 2011)
-
-URI zařízení socket://147.228.47.34:9100
-
-Canon imageRunner 2200 Foot...
-
-
-== SSH
-
-potíže s právy ssh klíčů, které jsem zkopíroval pomocí flash disku
-Permissions 0644 for
-'/.ssh/id_rsa' are too
-chmod 600 id_rsa
-
-http://bodhizazen.net/Tutorials/SSH_keys
-
-
-==tiskárna
-
-Nový návod (Lubuntu 2011)
-
-URI zařízení socket://147.228.47.34:9100
-
-Canon imageRunner 2200 Foot...
-
-
-domácí samsung scx 472x
-http://www.samsung.com/us/support/owners/product/SCX-4729FW/XAA
-
-
-
-
-== Office
-Možná nejsou potřeba
-sudo apt-get install libreoffice
-
-== Zámek sezení
-http://forum.lxde.org/viewtopic.php?f=8&t=31300
-
-= Pracovní nástroje
-== Kopírování .ssh
-public a private klíče
-
-== GIT
-sudo apt-get install git
-
-== CMake
-sudo apt-get install cmake
-sudo apt-get install cmake-curses-gui
-
-== C++ kompiler
-sudo apt-get install g++
-
-
-
-== ITK
-
-Potřebujeme ITK, build musíme udělat se sdílenými knihovnami.
-Není nutné překládat testing a examples. Překlad bude trvat několik hodin
-
-git clone git://itk.org/ITK.git
-git tag
-git checkout v4.0.0
-mkdir builditk
-cd builditk
-cmake -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF ../ITK
-# cmake  -DBUILD_SHARED_LIBS=ON -DITK_WRAP_JAVA=ON -DITK_WRAP_PYTHON=ON ../ITK
-make
-sudo make install
-
-
-== Matlab
-stahnout z pole, rozbalit
-nakopírovat do /usr/local/
-
-== ImageJ
-sudo apt-get install imagej
-
-= Projekty
-== Nastavení systémových proměnných
-
-Přidejte následující řádku do souboru /etc/environment
-
-QDATA_PATH=/home/mjirik/data/
-V případě distribuce Lubuntu toto nastavení nefunguje, řešením je vytvořit soubor ~/.xsessionrc
-
-# ~/.bashrc
-export QDATA_PATH=/home/mjirik/data/
-export QPRJ_QUEETECH=/home/mjirik/projects/queetech
-
-soubor musí mít nastavená spouštěcí práva
-
-chmod 722 .xsessionrc
-
-
-== Jatra
-cd projects/jatra/ivan/IJ_181_ITKbinaryThinningImageFilter
-
-
-
-
-= Mac
-
-sudo port install py27-zmq py27-tornado py27-nose py27-jinja2 py27-ipython
-
-klávesnice
-
-sudo cp ~/Dropbox/applications/klavesnice/mac/Miras.keylayout "/Library/Keyboard Layouts/"
-
+# == ostatní software= Nový návod (Lubuntu 2011)
+#
+# URI zařízení socket://147.228.47.34:9100
+#
+# Canon imageRunner 2200 Foot...
+#
+#
+# == SSH
+#
+# potíže s právy ssh klíčů, které jsem zkopíroval pomocí flash disku
+# Permissions 0644 for
+# '/.ssh/id_rsa' are too
+# chmod 600 id_rsa
+#
+# http://bodhizazen.net/Tutorials/SSH_keys
+#
+#
+# ==tiskárna
+#
+# Nový návod (Lubuntu 2011)
+#
+# URI zařízení socket://147.228.47.34:9100
+#
+# Canon imageRunner 2200 Foot...
+#
+#
+# domácí samsung scx 472x
+# http://www.samsung.com/us/support/owners/product/SCX-4729FW/XAA
+#
+#
+#
+#
+# == Office
+# Možná nejsou potřeba
+# sudo apt-get install libreoffice
+#
+# == Zámek sezení
+# http://forum.lxde.org/viewtopic.php?f=8&t=31300
+#
+# = Pracovní nástroje
+# == Kopírování .ssh
+# public a private klíče
+#
+# == GIT
+# sudo apt-get install git
+#
+# == CMake
+# sudo apt-get install cmake
+# sudo apt-get install cmake-curses-gui
+#
+# == C++ kompiler
+# sudo apt-get install g++
+#
+#
+#
+# == ITK
+#
+# Potřebujeme ITK, build musíme udělat se sdílenými knihovnami.
+# Není nutné překládat testing a examples. Překlad bude trvat několik hodin
+#
+# git clone git://itk.org/ITK.git
+# git tag
+# git checkout v4.0.0
+# mkdir builditk
+# cd builditk
+# cmake -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF ../ITK
+# # cmake  -DBUILD_SHARED_LIBS=ON -DITK_WRAP_JAVA=ON -DITK_WRAP_PYTHON=ON ../ITK
+# make
+# sudo make install
+#
+#
+# == Matlab
+# stahnout z pole, rozbalit
+# nakopírovat do /usr/local/
+#
+# == ImageJ
+# sudo apt-get install imagej
+#
+# = Projekty
+# == Nastavení systémových proměnných
+#
+# Přidejte následující řádku do souboru /etc/environment
+#
+# QDATA_PATH=/home/mjirik/data/
+# V případě distribuce Lubuntu toto nastavení nefunguje, řešením je vytvořit soubor ~/.xsessionrc
+#
+# # ~/.bashrc
+# export QDATA_PATH=/home/mjirik/data/
+# export QPRJ_QUEETECH=/home/mjirik/projects/queetech
+#
+# soubor musí mít nastavená spouštěcí práva
+#
+# chmod 722 .xsessionrc
+#
+#
+# == Jatra
+# cd projects/jatra/ivan/IJ_181_ITKbinaryThinningImageFilter
+#
+#
+#
+#
+# = Mac
+#
+# sudo port install py27-zmq py27-tornado py27-nose py27-jinja2 py27-ipython
+#
+# klávesnice
+#
+# sudo cp ~/Dropbox/applications/klavesnice/mac/Miras.keylayout "/Library/Keyboard Layouts/"
+#
