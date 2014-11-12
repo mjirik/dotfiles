@@ -89,7 +89,7 @@ vim ~/.config/ipython/profile_default/ipython_notebook_config.py
 arandr
 #cp ~/Dropbox/applications/screen/run_screen.sh ~/.config/autostart/
 
-
+echo ./.screenlayout/screen.sh >> ~/.config/lxsession/Lubuntu/autostart 
 
 
 ## Záložky
@@ -131,7 +131,7 @@ cp ~/Dropbox/applications/home/.gtk-bookmarks ~/
 sudo cp ~/Dropbox/applications/klavesnice/ubuntu/cz /usr/share/X11/xkb/symbols/cz
 sudo cp ~/Dropbox/applications/klavesnice/ubuntu/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
 
-echo “setxkbvariant cz basic0” >> ~/.config/lxsession/Lubuntu/autostart 
+echo setxkbvariant cz basic0 >> ~/.config/lxsession/Lubuntu/autostart 
 
 
 # další nastavení jsou patrně zastaralá
