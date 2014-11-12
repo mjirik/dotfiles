@@ -1,9 +1,15 @@
 #! /bin/sh
 #
+# Install my personalized lubuntu / i3
+# Dropbox login
+# * gmail login
+# * pole login
+#
 # install.sh
 # Copyright (C) 2014 mjirik <mjirik@mjirik-Latitude-E6520>
 #
 # Distributed under terms of the MIT license.
+#
 #
 
 
@@ -55,7 +61,7 @@ dropbox start
 ranger --copy-config=scope
 
 #zkopirovani  ssh klice z pole
-scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ./.ssh/id_rs
+scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rs
 
 git clone git@github.com:mjirik/vimrc.git ~/.vim
 rm ~/.vimrc
