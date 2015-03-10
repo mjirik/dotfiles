@@ -39,7 +39,11 @@ sudo apt-get install google-chrome-stable
 
 
 
-sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf ipython-notebook arandr python-skimage python-pandas g++ texlive-full libinsighttoolkit4-dev python-autopep8 unrar-free p7zip-full numlockx
+sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf ipython-notebook arandr python-skimage python-pandas g++ texlive-full libinsighttoolkit4-dev python-autopep8 unrar-free p7zip-full numlockx eog python-argcomplete
+
+# apps comments
+# eog - image viewer for ranger
+# python-argcomplete - completation for bash
 
 ## mendeley
 cd ~
