@@ -39,7 +39,7 @@ sudo apt-get install google-chrome-stable
 
 
 
-sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf ipython-notebook arandr python-skimage python-pandas g++ texlive-full libinsighttoolkit4-dev python-autopep8 unrar-free p7zip-full numlockx eog python-argcomplete
+sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf ipython-notebook arandr python-skimage python-pandas g++ texlive-full libinsighttoolkit4-dev python-autopep8 unrar-free p7zip-full numlockx eog python-argcomplete sshfs fuse
 
 # apps comments
 # eog - image viewer for ranger
@@ -81,6 +81,7 @@ ipython profile create
 
 echo "#odkomentovat řádek"
 echo "#c.FileNotebookManager.save_script = False "
+read -n 1 -s
 
 vim ~/.config/ipython/profile_default/ipython_notebook_config.py
 
@@ -130,6 +131,13 @@ cp ~/Dropbox/applications/home/.gtk-bookmarks ~/
 ## cat .ssh/id_rsa.pub | ssh mjirik@147.228.240.61 'cat >> .ssh/authorized_keys'
 
 
+## Bash history
+sudo add-apt-repository ppa:ultradvorka/ppa
+sudo apt-get update
+sudo apt-get install hh
+
+hh --show-configuration >> ~/.bashrc
+
 ## Klávesnice
 
 sudo cp ~/Dropbox/applications/klavesnice/ubuntu/cz /usr/share/X11/xkb/symbols/cz
@@ -142,12 +150,16 @@ echo setxkbvariant cz basic0 >> ~/.config/lxsession/Lubuntu/autostart
 
 # Nastavení rozložení jako výchozí (in lubuntu), ale ve 14.04 mi to nefunguje
 
+echo "Dalsi nastaveni jsou patrne zastarala"
+echo "set XKBVARIANT to basic0 - nefunguje ve 14.04"
+read -n 1 -s
 sudo vim /etc/default/keyboard
 #and set XKBVARIANT to "basic0"
 
 # zkoušim to přidat do vim ~/.config/lxsession/Lubuntu/autostart 
 # další možností je ~/.profile
 
+git clone git@github.com:ivanov/ipython-vimception.git  ~/.config/ipython/extensions/vimception
 
 #or sometimes
 #Open /etc/default/console-setup and set XKBVARIANT to "basic0"
