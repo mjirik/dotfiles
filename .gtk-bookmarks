@@ -1,0 +1,5 @@
+smb://192.168.1.95/public synology-public
+sftp://mjirik@147.228.240.61/mnt/proNAS/korpusy/queetech pole-korpusy
+sftp://mjirik@147.228.240.61/mnt/proNAS/public pole-public
+sftp://mjirik@147.228.240.61/home/mjirik pole-mjirik
+sftp://mjirik@eryx.zcu.cz/afs/zcu.cz/users/m/mjirik orion-mjirik

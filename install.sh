@@ -18,12 +18,13 @@
 
 
 
+actualdir=`pwd`
 
 ## Chrome
 
 #stáhnout deb
 #přidat klíč
-
+echo "install chrome"
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -33,28 +34,31 @@ sudo apt-get update
 sudo apt-get install google-chrome-stable
 
 
-
+# install everpad
+sudo add-apt-repository ppa:nvbn-rm/ppa
+sudo apt-get update
+sudo apt-get install everpad
 
 ## Aplikace
 
+echo "apt-get install ..."
+sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf ipython-notebook arandr python-skimage python-pandas g++ texlive-full libinsighttoolkit4-dev python-autopep8 unrar-free p7zip-full numlockx eog python-argcomplete sshfs fuse awesome awesome-extra
 
-
-sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf ipython-notebook arandr python-skimage python-pandas g++ texlive-full libinsighttoolkit4-dev python-autopep8 unrar-free p7zip-full numlockx eog python-argcomplete sshfs fuse
+echo "programming packages"
 
 # apps comments
 # eog - image viewer for ranger
 # python-argcomplete - completation for bash
 
+echo "installing mendeley"
 ## mendeley
-cd ~
-mkdir tmp
-cd tmp
+# cd ~
+# mkdir tmp
+# cd tmp
 # wget http://www.mendeley.com/repositories/ubuntu/stable/i386/mendeleydesktop-latest
 wget http://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
-
 sudo dpkg -i mendeleydesktop-latest
-
-cd ~
+rm mendeleydesktop-latest
 
 
 
@@ -66,10 +70,16 @@ ranger --copy-config=scope
 
 #zkopirovani  ssh klice z pole
 scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rs
+# TODO pridat sem kopirovani pypirc
 
 git clone git@github.com:mjirik/vimrc.git ~/.vim
 rm ~/.vimrc
 ln -s ~/.vim/.vimrc ~/
+
+# awesome setup
+rm -rf ~/.config/awesome
+mkdir ~/.config/awesome
+ln -s $actualdir/awesome/rc.lua ~/.config/awesome
 
 
 ## ipython
@@ -81,7 +91,8 @@ ipython profile create
 
 echo "#odkomentovat řádek"
 echo "#c.FileNotebookManager.save_script = False "
-read -n 1 -s
+# read -n 1 -s
+read -p "Press [Enter] key to start backup..."
 
 vim ~/.config/ipython/profile_default/ipython_notebook_config.py
 
@@ -99,11 +110,13 @@ echo ./.screenlayout/screen.sh >> ~/.config/lxsession/Lubuntu/autostart
 
 ## Záložky
 
+rm ~/.gtk-bookmarks
+ln -s $actualdir/.gtk-bookmarks ~/
 
 read -rsp $' Afetr dropbox sync press enter to continue...\n'
 
 # pole public
-cp ~/Dropbox/applications/home/.gtk-bookmarks ~/
+# cp ~/Dropbox/applications/home/.gtk-bookmarks ~/
 
 
 
@@ -140,8 +153,11 @@ hh --show-configuration >> ~/.bashrc
 
 ## Klávesnice
 
-sudo cp ~/Dropbox/applications/klavesnice/ubuntu/cz /usr/share/X11/xkb/symbols/cz
-sudo cp ~/Dropbox/applications/klavesnice/ubuntu/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
+sudo cp $actualdir/keyboard/cz /usr/share/X11/xkb/symbols/cz
+sudo cp $actualdir/keyboard/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
+
+# sudo cp ~/Dropbox/applications/klavesnice/ubuntu/cz /usr/share/X11/xkb/symbols/cz
+# sudo cp ~/Dropbox/applications/klavesnice/ubuntu/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
 
 echo setxkbvariant cz basic0 >> ~/.config/lxsession/Lubuntu/autostart 
 
