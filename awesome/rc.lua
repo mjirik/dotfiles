@@ -10,7 +10,10 @@ require("naughty")
 -- Load Debian menu entries
 require("debian.menu")
 
+require("awful.util")
 local vicious = require("vicious")
+
+-- require("vicious.widgets.volume")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -111,6 +114,14 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 mytextclock = awful.widget.textclock({ align = "right" })
 
 -- muj pridany wiget
+volwidget = widget({ type = "textbox" })
+vicious.register(volwidget, vicious.widgets.volume, " $1% ", 2, "PCM")
+volwidget:buttons(awful.util.table.join(
+    awful.button({ }, 1, function () awful.util.spawn("amixer -q set Master toggle", false) end),
+    awful.button({ }, 3, function () awful.util.spawn("xterm -e alsamixer", true) end),
+    awful.button({ }, 4, function () awful.util.spawn("amixer -q set PCM 1dB+", false) end),
+    awful.button({ }, 5, function () awful.util.spawn("amixer -q set PCM 1dB-", false) end)
+))
 -- netwidget = wibox.widget.textbox()
 -- vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${eth0 down_kb}</span> <span color="#7F9F7F">${eth0 up_kb}</span>', 3)
 -- Create a systray
@@ -194,6 +205,7 @@ for s = 1, screen.count() do
         mytextclock,
         -- netwidget,
         s == 1 and mysystray or nil,
+        volwidget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -389,4 +401,12 @@ end)
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+-- {{{ Startup applications created by mjirik
+-- awful.util.spawn("conky -p 15 -u 5")
+-- awful.util.spawn("nm-applet")
+-- awful.util.spawn("dropbox start")
+-- awful.util.spawn("kupfer")
+-- awful.util.spawn("synology-cloud-station")
 -- }}}
