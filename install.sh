@@ -110,9 +110,11 @@ echo ./.screenlayout/screen.sh >> ~/.config/lxsession/Lubuntu/autostart
 
 ## Záložky
 
+# old 
 rm ~/.gtk-bookmarks
-rm ~/.config/gtk-3.0/bookmarks
 ln -s $actualdir/.gtk-bookmarks ~/
+# new
+rm ~/.config/gtk-3.0/bookmarks
 ln -s $actualdir/.gtk-bookmarks ~/.config/gtk-3.0/bookmarks
 
 read -rsp $' Afetr dropbox sync press enter to continue...\n'
