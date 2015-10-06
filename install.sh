@@ -42,7 +42,7 @@ sudo apt-get install everpad
 ## Aplikace
 
 echo "apt-get install ..."
-sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf ipython-notebook arandr python-skimage python-pandas g++ texlive-full libinsighttoolkit4-dev python-autopep8 unrar-free p7zip-full numlockx eog python-argcomplete sshfs fuse awesome awesome-extra
+sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ texlive-full libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog python-argcomplete sshfs fuse awesome awesome-extra
 
 echo "programming packages"
 
@@ -111,7 +111,9 @@ echo ./.screenlayout/screen.sh >> ~/.config/lxsession/Lubuntu/autostart
 ## Záložky
 
 rm ~/.gtk-bookmarks
+rm ~/.config/gtk-3.0/bookmarks
 ln -s $actualdir/.gtk-bookmarks ~/
+ln -s $actualdir/.gtk-bookmarks ~/.config/gtk-3.0/bookmarks
 
 read -rsp $' Afetr dropbox sync press enter to continue...\n'
 
