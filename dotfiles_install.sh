@@ -10,7 +10,7 @@
 sudo apt-get install git
 cd ~
 mkdir projects
-cd projecst 
+cd projects 
 git clone https://github.com/mjirik/dotfiles.git
 cd dotfiles
 ./install.sh
