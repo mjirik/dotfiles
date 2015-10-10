@@ -69,7 +69,7 @@ dropbox start
 ranger --copy-config=scope
 
 #zkopirovani  ssh klice z pole
-scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rs
+scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rsa
 # TODO pridat sem kopirovani pypirc
 
 git clone git@github.com:mjirik/vimrc.git ~/.vim
