@@ -20,57 +20,18 @@
 
 actualdir=`pwd`
 
+./install_apt.sh
+#zkopirovani  ssh klice z pole
+scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rsa
+# TODO pridat sem kopirovani pypirc
 ## Chrome
 
-#stáhnout deb
-#přidat klíč
-echo "install chrome"
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-
-sudo apt-get update
-
-sudo apt-get install google-chrome-stable
-
-
-# install everpad
-sudo add-apt-repository ppa:nvbn-rm/ppa
-sudo apt-get update
-sudo apt-get install everpad
-
-## Aplikace
-
-echo "apt-get install ..."
-sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg python-ipdb i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepassx kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ texlive-full libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog python-argcomplete sshfs fuse awesome awesome-extra
-
-echo "programming packages"
-
-# apps comments
-# eog - image viewer for ranger
-# python-argcomplete - completation for bash
-
-echo "installing mendeley"
-## mendeley
-# cd ~
-# mkdir tmp
-# cd tmp
-# wget http://www.mendeley.com/repositories/ubuntu/stable/i386/mendeleydesktop-latest
-wget http://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
-sudo dpkg -i mendeleydesktop-latest
-rm mendeleydesktop-latest
-
-
-
-## dropbox 
-dropbox start
+# bash history
+hh --show-configuration >> ~/.bashrc
 
 # nastavení rangeru
 ranger --copy-config=scope
 
-#zkopirovani  ssh klice z pole
-scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rsa
-# TODO pridat sem kopirovani pypirc
 
 git clone git@github.com:mjirik/vimrc.git ~/.vim
 rm ~/.vimrc
@@ -92,16 +53,21 @@ ipython profile create
 echo "#odkomentovat řádek"
 echo "#c.FileNotebookManager.save_script = False "
 # read -n 1 -s
-read -p "Press [Enter] key to start backup..."
+read -p "Press [Enter] key to start editor"
 
 vim ~/.config/ipython/profile_default/ipython_notebook_config.py
 
-
+# vimception
+git clone git@github.com:ivanov/ipython-vimception.git  ~/.config/ipython/extensions/vimception
 #
 
+git config --global user.email "miroslav.jirik@gmail.com"
+git config --global user.name "Miroslav Jirik"
 ##monitory
 
 #pomoci arandr vytvorit ~/.screenlayout/screen.sh
+echo "save screen layout to ~/.screenlayout/screen.sh"
+read -p "Press [Enter] key to start arandr"
 arandr
 #cp ~/Dropbox/applications/screen/run_screen.sh ~/.config/autostart/
 
@@ -117,11 +83,10 @@ ln -s $actualdir/.gtk-bookmarks ~/
 rm ~/.config/gtk-3.0/bookmarks
 ln -s $actualdir/.gtk-bookmarks ~/.config/gtk-3.0/bookmarks
 
-read -rsp $' Afetr dropbox sync press enter to continue...\n'
+read -p "Afetr dropbox sync press enter to continue..."
 
 # pole public
 # cp ~/Dropbox/applications/home/.gtk-bookmarks ~/
-
 
 
 
@@ -148,46 +113,13 @@ read -rsp $' Afetr dropbox sync press enter to continue...\n'
 ## cat .ssh/id_rsa.pub | ssh mjirik@147.228.240.61 'cat >> .ssh/authorized_keys'
 
 
-## Bash history
-sudo add-apt-repository ppa:ultradvorka/ppa
-sudo apt-get update
-sudo apt-get install hh
 
-hh --show-configuration >> ~/.bashrc
 
 ## Klávesnice
-
-sudo cp $actualdir/keyboard/cz /usr/share/X11/xkb/symbols/cz
-sudo cp $actualdir/keyboard/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
-
-# sudo cp ~/Dropbox/applications/klavesnice/ubuntu/cz /usr/share/X11/xkb/symbols/cz
-# sudo cp ~/Dropbox/applications/klavesnice/ubuntu/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
-
-echo setxkbvariant cz basic0 >> ~/.config/lxsession/Lubuntu/autostart 
+./install_keyboard.sh
 
 
-# další nastavení jsou patrně zastaralá
 
-# Nastavení rozložení jako výchozí (in lubuntu), ale ve 14.04 mi to nefunguje
-
-echo "Dalsi nastaveni jsou patrne zastarala"
-echo "set XKBVARIANT to basic0 - nefunguje ve 14.04"
-read -n 1 -s
-sudo vim /etc/default/keyboard
-#and set XKBVARIANT to "basic0"
-
-# zkoušim to přidat do vim ~/.config/lxsession/Lubuntu/autostart 
-# další možností je ~/.profile
-
-git clone git@github.com:ivanov/ipython-vimception.git  ~/.config/ipython/extensions/vimception
-
-#or sometimes
-#Open /etc/default/console-setup and set XKBVARIANT to "basic0"
-
-#ručně
-#setxkbmap -layout cz basic0
-
-#Více v Dropbox/application/klavesnice/ubuntu
 
 # --------------------------------------------------------------
 
