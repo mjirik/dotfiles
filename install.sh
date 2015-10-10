@@ -24,7 +24,15 @@ actualdir=`pwd`
 #zkopirovani  ssh klice z pole
 scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rsa
 # TODO pridat sem kopirovani pypirc
-## Chrome
+# this repository setup
+git remote set-url origin git@github.com:mjirik/dotfiles.git
+
+# git global setup
+git config --global user.email "miroslav.jirik@gmail.com"
+git config --global user.name "Miroslav Jirik"
+# mozna casem nebude nasledujici radek potreba
+git config --global push.default simple
+
 
 # bash history
 hh --show-configuration >> ~/.bashrc
@@ -61,8 +69,6 @@ vim ~/.config/ipython/profile_default/ipython_notebook_config.py
 git clone git@github.com:ivanov/ipython-vimception.git  ~/.config/ipython/extensions/vimception
 #
 
-git config --global user.email "miroslav.jirik@gmail.com"
-git config --global user.name "Miroslav Jirik"
 ##monitory
 
 #pomoci arandr vytvorit ~/.screenlayout/screen.sh
