@@ -142,7 +142,7 @@ xkb_symbols "ucw" {
     key <AD09> { [oacute,      Oacute      ] };
     key <AD10> { [odiaeresis,  Odiaeresis  ] };
 };
-xkb_symbols "basic6" {
+xkb_symbols "basic0" {
      
      //  Moje rozlozeni klavesnice 
      //  Michal Friesl, http://home.zcu.cz/~friesl/
