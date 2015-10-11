@@ -52,7 +52,7 @@ ln -s $actualdir/awesome/rc.lua ~/.config/awesome
 
 
 ## ipython
-
+source ./install_python.sh
 
 # kofigurace
 
@@ -68,7 +68,6 @@ vim ~/.config/ipython/profile_default/ipython_notebook_config.py
 # vimception
 git clone git@github.com:ivanov/ipython-vimception.git  ~/.config/ipython/extensions/vimception
 #
-
 ##monitory
 
 #pomoci arandr vytvorit ~/.screenlayout/screen.sh
