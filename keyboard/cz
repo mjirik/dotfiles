@@ -194,7 +194,7 @@ xkb_symbols "basic0" {
     key <AD11>	{ [bracketleft, braceleft,       uacute,        slash ]	};
     key <AD12>	{ [bracketright,braceright,  parenright,    parenleft ]	};
 
-    key <AC01>	{ [         a,          F,   aacute,     Aacute ]	};
+    key <AC01>	{ [         a,          A,      aacute,        Aacute ]	};
     key <AC02>	{ [         s,          S,      scaron,       Scaron  ]	};
     key <AC03>	{ [         d,          D,      dcaron,       Dcaron  ]	};
     key <AC04>	{ [         f,          F,  bracketleft,     NoSymbol ]	};
