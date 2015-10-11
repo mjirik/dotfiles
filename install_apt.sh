@@ -9,6 +9,11 @@
 
 #stáhnout deb
 #přidat klíč
+
+# pycharm repo
+wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+
 ## Chrome
 echo "install chrome"
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -16,6 +21,9 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 
 sudo apt-get update
+
+
+
 
 sudo apt-get install google-chrome-stable
 
@@ -31,9 +39,6 @@ sudo apt-get install nautilus-dropbox
 ## dropbox 
 dropbox start
 
-# pycharm repo
-wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
-sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
 
 echo "apt-get install ..."
 sudo apt-get install git  libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepass2 kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ texlive-full libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse awesome awesome-extra pycharm
