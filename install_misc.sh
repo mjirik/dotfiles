@@ -11,6 +11,8 @@
 #zkopirovani  ssh klice z pole
 scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rsa
 # TODO pridat sem kopirovani pypirc
+scp mjirik@147.228.47.162:/home/mjirik/.pypirc ~/.pypirc
+
 # this repository setup
 git remote set-url origin git@github.com:mjirik/dotfiles.git
 
