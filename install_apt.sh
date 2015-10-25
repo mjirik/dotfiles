@@ -37,7 +37,7 @@ sudo apt-get install google-chrome-stable
 
 sudo apt-get install nautilus-dropbox
 ## dropbox 
-dropbox start
+dropbox start -i
 
 
 echo "apt-get install ..."
