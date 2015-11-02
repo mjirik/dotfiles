@@ -12,6 +12,9 @@
 scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rsa
 # TODO pridat sem kopirovani pypirc
 scp mjirik@147.228.47.162:/home/mjirik/.pypirc ~/.pypirc
+# nebo radeji vygenerovat ?
+# ssh-keygen
+# ssh-copy-id ~/.ssh/id_rsa.pub mjirik@147.228.47.162
 
 # this repository setup
 git remote set-url origin git@github.com:mjirik/dotfiles.git
