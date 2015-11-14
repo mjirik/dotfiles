@@ -7,6 +7,7 @@
 #
 
 
+actualdir=`pwd`
 
 #zkopirovani  ssh klice z pole
 scp mjirik@147.228.240.61:/home/mjirik/ssh/id_rsa ~/.ssh/id_rsa
