@@ -11,6 +11,10 @@ actualdir=`pwd`
 #stáhnout deb
 #přidat klíč
 
+# pycharm
+sudo add-apt-repository ppa:mystic-mirage/pycharm
+
+
 # pycharm repo
 wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
 sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
@@ -42,7 +46,8 @@ dropbox start -i
 
 
 echo "apt-get install ..."
-sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepass2 kupfer vlc imagej gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ texlive-full libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse awesome awesome-extra pycharm arandr
+sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepass2 kupfer vlc imagej 
+sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ texlive-full libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse awesome awesome-extra pycharm arandr
 
 echo "programming packages"
 
