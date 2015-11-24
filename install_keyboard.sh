@@ -6,6 +6,7 @@
 # Distributed under terms of the MIT license.
 #
 
+actualdir=`pwd`
 
 
 sudo cp $actualdir/keyboard/cz /usr/share/X11/xkb/symbols/cz

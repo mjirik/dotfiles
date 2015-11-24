@@ -6,6 +6,6 @@ sftp://mjirik@eryx.zcu.cz/afs/zcu.cz/users/m/mjirik orion-mjirik
 sftp://cvdlab@192.168.127.98/home/cvdlab cvdlab148
 sftp://mjirik@147.228.124.51/var/www/html/zdo/data sako
 sftp://mjirik@147.228.47.162/ un533
-smb://mjirik@192.168.1.95/public synology-local
+smb://192.168.1.95/public synology-local
 sftp://pole1.uk.quickconnect.to/ synology 
 file:///home/mjirik/data/medical data-medical
