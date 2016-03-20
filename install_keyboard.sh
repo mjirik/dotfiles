@@ -24,6 +24,7 @@ echo setxkbvariant cz basic0 >> ~/.config/lxsession/Lubuntu/autostart
 
 echo "Dalsi nastaveni jsou patrne zastarala"
 echo "set XKBVARIANT to basic0 - nefunguje ve 14.04"
+read -p "Press [Enter] key to start editor"
 read -n 1 -s
 sudo vim /etc/default/keyboard
 #and set XKBVARIANT to "basic0"
