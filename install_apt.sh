@@ -16,14 +16,18 @@ sudo add-apt-repository ppa:mystic-mirage/pycharm
 
 
 # pycharm repo
-wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
-sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+if grep -q "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" "/etc/apt/sources.list.d/getdeb.list'"; then
+    wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+    sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+fi
 
 ## Chrome
 echo "install chrome"
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+if grep -q  "deb http://dl.google.com/linux/chrome/deb/ stable main" "/etc/apt/sources.list.d/getdeb.list'"; then
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+fi
 
 sudo apt-get update
 
