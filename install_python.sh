@@ -17,7 +17,10 @@ HOMEDIR="`pwd`"
 echo "export PATH=$HOMEDIR/miniconda/bin:\$PATH" >> ~/.bashrc
 export PATH=$HOMEDIR/miniconda/bin:$PATH
 
+conda config --add channels mjirik
+
 conda install ipython-notebook
+
 
 ## ipython
 
