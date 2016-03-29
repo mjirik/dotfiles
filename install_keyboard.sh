@@ -8,6 +8,15 @@
 
 actualdir=`pwd`
 
+# klavesnice Microsoft Ergo
+
+# sudo cp Dropbox/applications/klavesnice/ms-ergo/98-ms-ergo.rules /etc/udev/rules.d/98-ms-ergo.rules
+
+sudo cp $actualdir/61-keyboard-local.hwdb /etc/udev/hwdb.d/61-keyboard-local.hwdb
+sudo udevadm hwdb --update
+sudo udevadm control --reload
+
+# Rozložení
 
 sudo cp $actualdir/keyboard/cz /usr/share/X11/xkb/symbols/cz
 sudo cp $actualdir/keyboard/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
