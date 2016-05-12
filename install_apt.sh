@@ -16,14 +16,17 @@ sudo add-apt-repository ppa:mystic-mirage/pycharm
 
 
 # pycharm repo
-if grep -q "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" "/etc/apt/sources.list.d/getdeb.list'"; then
+the_ppa="deb http://archive.getdeb.net/ubuntu trusty-getdeb apps"
+if ! grep -q "$the_ppa" "/etc/apt/sources.list" "/etc/apt/sources.list.d/*"; then
+    echo "install getdeb repo"
     wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
     sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
 fi
 
 ## Chrome
-echo "install chrome"
-if grep -q  "deb http://dl.google.com/linux/chrome/deb/ stable main" "/etc/apt/sources.list.d/getdeb.list'"; then
+the_ppa="deb http://dl.google.com/linux/chrome/deb/ stable main"
+if ! grep -q  "$the_ppa" "/etc/apt/sources.list" "/etc/apt/sources.list.d/*"; then
+    echo "install chrome repo"
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
     sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -51,7 +54,7 @@ dropbox start -i
 
 echo "apt-get install ..."
 sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepass2 kupfer vlc imagej 
-sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse awesome awesome-extra pycharm arandr
+sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse awesome awesome-extra pycharm-community arandr
 sudo apt-get install texlive-full texlive-lang-czechslovak
 
 echo "programming packages"
