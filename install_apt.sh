@@ -55,7 +55,7 @@ dropbox start -i
 echo "apt-get install ..."
 sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepass2 kupfer vlc imagej 
 sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse awesome awesome-extra pycharm-community arandr
-sudo apt-get install texlive-full texlive-lang-czechslovak
+sudo apt-get install texlive-full texlive-lang-czechslovak setup sshfs
 
 echo "programming packages"
 
@@ -64,15 +64,20 @@ echo "programming packages"
 # python-argcomplete - completation for bash
 # python-ipdb
 
-echo "installing mendeley"
+# install mendeley
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' *mendeley*|grep "install ok installed")
+echo Checking for somelib: $PKG_OK
+if [ "" == "$PKG_OK" ]; then
+  echo "installing mendeley"
+  wget http://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+  sudo dpkg -i mendeleydesktop-latest
+  rm mendeleydesktop-latest
+fi
 ## mendeley
 # cd ~
 # mkdir tmp
 # cd tmp
 # wget http://www.mendeley.com/repositories/ubuntu/stable/i386/mendeleydesktop-latest
-wget http://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
-sudo dpkg -i mendeleydesktop-latest
-rm mendeleydesktop-latest
 
 
 ## Bash history

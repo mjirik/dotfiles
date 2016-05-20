@@ -69,6 +69,19 @@ ln -s $actualdir/.gtk-bookmarks ~/.config/gtk-3.0/bookmarks
 
 read -p "Afetr dropbox sync press enter to continue..."
 
+# setup sshfs
+sudo touch /etc/auto.sshfs
+sudo touch /etc/auto.master
+
+filetext="synologypublic"
+if ! grep -q "$filetext" "/etc/auto.sshfs"; then
+    echo "set /etc/auto.sshfs"
+    sudo sh -c 'echo "synologypublic -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/home/mjirik/.ssh/id_rsa,UserKnownHostsFile=/home/mjirik/.ssh/known_hosts :sshfs\#mjirik@192.168.1.95:/public" >> /etc/auto.sshfs'
+    sudo sh -c 'echo "polepublic -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/home/mjirik/.ssh/id_rsa,UserKnownHostsFile=/home/mjirik/.ssh/known_hosts :sshfs\#mjirik@147.228.240.61:/public" >> /etc/auto.sshfs'
+    sudo sh -c 'echo "/home/mjirik/autofs /etc/auto.sshfs uid=1000,gid=1000,--timeout=30,--ghost" >> /etc/auto.master'
+fi
+
+
 # pole public
 # cp ~/Dropbox/applications/home/.gtk-bookmarks ~/
 
