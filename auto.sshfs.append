@@ -1,0 +1,4 @@
+synologypublic -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/home/mjirik/.ssh/id_rsa,UserKnownHostsFile=/home/mjirik/.ssh/known_hosts :sshfs\#mjirik@192.168.1.95:/public
+polepublic -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/home/mjirik/.ssh/id_rsa,UserKnownHostsFile=/home/mjirik/.ssh/known_hosts :sshfs\#mjirik@147.228.240.61:/public
+un533h -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/home/mjirik/.ssh/id_rsa,UserKnownHostsFile=/home/mjirik/.ssh/known_hosts :sshfs\#mjirik@147.228.47.162:/home/mjirik
+
