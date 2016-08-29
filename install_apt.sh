@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 #
 # install_apt.sh
 # Copyright (C) 2015 mjirik <mjirik@mjirik-Latitude-E6520>
@@ -56,6 +56,7 @@ echo "apt-get install ..."
 sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepass2 kupfer vlc imagej 
 sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse awesome awesome-extra pycharm-community arandr
 sudo apt-get install texlive-full texlive-lang-czechslovak setup sshfs
+sudo apt.get install keepassx
 
 echo "programming packages"
 
@@ -81,6 +82,12 @@ fi
 
 
 ## Bash history
-sudo add-apt-repository ppa:ultradvorka/ppa
-sudo apt-get update
-sudo apt-get install hh
+# sudo add-apt-repository ppa:ultradvorka/ppa
+# sudo apt-get update
+# sudo apt-get install hh
+
+# basic vim
+sudo apt-get install vim
+
+# bash interpret 
+sudo apt-get install fish
