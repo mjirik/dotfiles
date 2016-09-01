@@ -79,7 +79,7 @@ if ! grep -q "$filetext" "/etc/auto.sshfs"; then
     # sudo sh -c 'echo "synologypublic -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/home/mjirik/.ssh/id_rsa,UserKnownHostsFile=/home/mjirik/.ssh/known_hosts :sshfs\#mjirik@192.168.1.95:/public" >> /etc/auto.sshfs'
     # sudo sh -c 'echo "polepublic -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/home/mjirik/.ssh/id_rsa,UserKnownHostsFile=/home/mjirik/.ssh/known_hosts :sshfs\#mjirik@147.228.240.61:/public" >> /etc/auto.sshfs'
     sudo bash -c "cat $actualdir/auto.sshfs.append >> /etc/auto.sshfs"
-    sudo sh -c 'echo "/home/mjirik/autofs /etc/auto.sshfs uid=1000,gid=1000,--timeout=30,--ghost" >> /etc/auto.master'
+    sudo sh -c 'echo "/home/mjirik/autofs/sshfs /etc/auto.sshfs uid=1000,gid=1000,--timeout=30,--ghost" >> /etc/auto.master'
     # sudo /etc/init.d/autofs reload
     sudo /etc/init.d/autofs restart
 fi
