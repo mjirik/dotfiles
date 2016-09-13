@@ -45,6 +45,7 @@ ln -s ~/.vim/.vimrc ~/
 rm -rf ~/.config/awesome
 mkdir ~/.config/awesome
 ln -s $actualdir/awesome/rc.lua ~/.config/awesome
+ln -s $actualdir/awesome/locker.sh ~/.config/awesome
 
 
 ##monitory
