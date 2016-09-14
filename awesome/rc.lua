@@ -1,11 +1,12 @@
 -- Standard awesome library
-require("awful")
+local gears = require("gears")
+local awful = require("awful")
 require("awful.autofocus")
 require("awful.rules")
 -- Theme handling library
-require("beautiful")
+local beautiful = require("beautiful")
 -- Notification library
-require("naughty")
+local naughty = require("naughty")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -27,15 +28,15 @@ end
 -- Handle runtime errors after startup
 do
     local in_error = false
-    awesome.add_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
+    awesome.connect_signal("debug::error", function (err)
+	-- Make sure we don't go into an endless error loop
+	if in_error then return end
+	in_error = true
 
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = err })
-        in_error = false
+	naughty.notify({ preset = naughty.config.presets.critical,
+			 title = "Oops, an error happened!",
+			 text = err })
+	in_error = false
     end)
 end
 -- }}}
@@ -80,7 +81,7 @@ tags = {
     -- names = { "main", "www", "edit", 4, 5, 6, 7, 8, 9},
     names = { "main", "www", "edit", 4, 5, 6, 7, 8, 9},
     layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], 
-               layouts[1], layouts[1], layouts[1], layouts[1] }
+	       layouts[1], layouts[1], layouts[1], layouts[1] }
 }
 -- tags = {}
 for s = 1, screen.count() do
@@ -99,16 +100,16 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal },
-                                    { "Volume", 'xterm -e alsamixer'},
-                                    { "Logout", awesome.quit },
-                                    { "Shutdown", '/home/mjirik/bin/shutdown_dialog.sh'}
-                                  }
-                        })
+				    { "Debian", debian.menu.Debian_menu.Debian },
+				    { "open terminal", terminal },
+				    { "Volume", 'xterm -e alsamixer'},
+				    { "Logout", awesome.quit },
+				    { "Shutdown", '/home/mjirik/bin/shutdown_dialog.sh'}
+				  }
+			})
 
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
-                                     menu = mymainmenu })
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+				     menu = mymainmenu })
 -- }}}
 
 -- {{{ Wibox
