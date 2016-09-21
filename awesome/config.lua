@@ -24,8 +24,8 @@
 -- screen_lock_cmd = "gnome-screensaver-command -l"
 screen_lock_cmd = "i3lock -c 000000"
 -- auto lock after 5 minutes
-screen_autolock_time = "5"
-screen_autolock_warn_sec = "10"
+screen_autolock_time = "15"
+screen_autolock_warn_sec = "30"
 
 
 -- shutdown, restart and hybernate (using ubus, ConsoleKit and UPower)

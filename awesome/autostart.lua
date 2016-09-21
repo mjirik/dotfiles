@@ -38,6 +38,7 @@ require("config")
 screen_autolock_warn_cmd = "echo \\\"naughty.notify({preset = naughty.config.presets.critical,text='LOCKING IN "
 .. screen_autolock_warn_sec ..  " s', timeout=".. screen_autolock_warn_sec .. "})\\\" | awesome-client"
 awful.util.spawn('xautolock' .. ' -time ' ..  screen_autolock_time
+                      .. ' -corners -000' ..
                       .. ' -locker "' .. screen_lock_cmd
                       .. '" -notifier "' .. screen_autolock_warn_cmd
                       .. '" -notify ' .. screen_autolock_warn_sec)
