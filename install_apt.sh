@@ -53,11 +53,19 @@ dropbox start -i
 
 
 echo "apt-get install ..."
-sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 mc xfce4-screenshooter exuberant-ctags gitk cups-pdf nautilus keepass2 kupfer vlc imagej 
-sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img caca-utils atool highlight mediainfo xpdf arandr g++ libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog sshfs fuse pycharm-community arandr
+sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox 
+sudo apt-get install imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 
+sudo apt-get install mc xfce4-screenshooter exuberant-ctags gitk cups-pdf 
+sudo apt-get install nautilus keepass2 kupfer vlc 
+sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img 
+sudo apt-get install caca-utils atool highlight mediainfo xpdf arandr g++ 
+sudo apt-get install libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog 
+sudo apt-get install sshfs fuse pycharm-community arandr
 sudo apt-get install texlive-full texlive-lang-czechslovak setup sshfs
 sudo apt.get install keepassx
 sudo apt.get install awesome awesome-extra notify-send xautolock i3lock
+# Informace o baterce pro awesome
+sudo apt.get install acpi
 
 echo "programming packages"
 
