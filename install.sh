@@ -20,13 +20,16 @@
 
 actualdir=`pwd`
 
-./install_apt.sh
+source ./install_apt.sh
 ## ipython
-./install_misc.sh
+source ./install_misc.sh
+source ./install_awesome.sh
 
 source ./install_python.sh
 ## Klávesnice
-./install_keyboard.sh
+source ./install_keyboard.sh
+
+
 
 
 

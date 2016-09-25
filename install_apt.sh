@@ -63,9 +63,6 @@ sudo apt-get install libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog
 sudo apt-get install sshfs fuse pycharm-community arandr
 sudo apt-get install texlive-full texlive-lang-czechslovak setup sshfs
 sudo apt.get install keepassx
-sudo apt.get install awesome awesome-extra notify-send xautolock i3lock
-# Informace o baterce pro awesome
-sudo apt.get install acpi
 
 echo "programming packages"
 

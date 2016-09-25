@@ -41,13 +41,6 @@ git clone git@github.com:mjirik/vimrc.git ~/.vim
 rm ~/.vimrc
 ln -s ~/.vim/.vimrc ~/
 
-# awesome setup
-rm -rf ~/.config/awesome.bck
-mv ~/.config/awesome ~/.config/awesome.bck 
-mkdir ~/.config/awesome
-ln -s $actualdir/awesome/* ~/.config/awesome/
-# ln -s $actualdir/awesome/locker.sh ~/.config/awesome
-
 
 ##monitory
 
