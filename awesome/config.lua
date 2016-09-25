@@ -20,13 +20,16 @@
 --  session management  --
 --------------------------
 
--- screensaver lock command
--- screen_lock_cmd = "gnome-screensaver-command -l"
--- screen_lock_cmd = "i3lock -c 000000"
-screen_lock_cmd = "i3lock -c 000000 -i ~/.config/awesome/fuzzy_lock.sh"
 -- auto lock after 5 minutes
 screen_autolock_time = "5"
 screen_autolock_warn_sec = "30"
+-- auto sleep 30 minutes after lock
+screen_autsleep_time = "30"
+
+-- screensaver lock command
+-- screen_lock_cmd = "gnome-screensaver-command -l"
+-- screen_lock_cmd = "i3lock -c 000000"
+screen_lock_cmd = "~/.config/awesome/fuzzy_lock.sh " .. screen_autsleep_time
 
 
 -- shutdown, restart and hybernate (using ubus, ConsoleKit and UPower)

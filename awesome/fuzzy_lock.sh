@@ -1,6 +1,17 @@
 #!/bin/bash
 
-#!/bin/sh -e
+# parse argument
+SLEEPTIME=30
+
+if [ -z "$1" ]
+then
+    echo "no args"
+else
+    SLEEPTIME=$1
+fi
+
+echo SLEEPTIME: $SLEEPTIME
+
 
 # Take a screenshot
 scrot /tmp/screen_locked.png
