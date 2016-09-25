@@ -38,7 +38,9 @@ screen_autolock_warn_cmd = "echo \\\"naughty.notify({preset = naughty.config.pre
 screen_autolock_warn_cmd = 'notify-send -u critical -t 10000 Locking'
 awful.util.spawn('xautolock' .. ' -time ' ..  screen_autolock_time
                       .. ' -detectsleep'
-                      .. ' -corners -000'
+--                      .. ' -corners -000'
+                      .. ' -corners ----'
+                      .. ' -cornersize 20'
                       .. ' -locker "' .. screen_lock_cmd
                       .. '" -notifier "' .. screen_autolock_warn_cmd
                       .. '" -notify ' .. screen_autolock_warn_sec)
