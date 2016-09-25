@@ -22,9 +22,10 @@
 
 -- screensaver lock command
 -- screen_lock_cmd = "gnome-screensaver-command -l"
-screen_lock_cmd = "i3lock -c 000000"
+-- screen_lock_cmd = "i3lock -c 000000"
+screen_lock_cmd = "i3lock -c 000000 -i ~/.config/awesome/fuzzy_lock.sh"
 -- auto lock after 5 minutes
-screen_autolock_time = "15"
+screen_autolock_time = "5"
 screen_autolock_warn_sec = "30"
 
 
