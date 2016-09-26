@@ -6,7 +6,11 @@
 # Distributed under terms of the MIT license.
 #
 
-sudo apt-get install awesome awesome-extra notify-send xautolock i3lock acpi
+sudo apt-get install awesome awesome-extra xautolock i3lock acpi
+# old ubuntu distros 14.04
+sudo apt-get install libnotify-bin
+# new ubuntu distros 16.04
+sudo apt-get install notify-send
 
 # backup config
 rm -rf ~/.config/awesome.bck &>> install_awesome.log
