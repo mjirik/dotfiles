@@ -390,6 +390,7 @@ clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
+require("mykeys")
 -- Set keys
 root.keys(globalkeys)
 -- }}}
@@ -499,5 +500,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 
 
-require("mykeys")
 require("autostart")
