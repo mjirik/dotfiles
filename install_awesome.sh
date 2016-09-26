@@ -6,7 +6,7 @@
 # Distributed under terms of the MIT license.
 #
 
-sudo apt.get install awesome awesome-extra notify-send xautolock i3lock acpi
+sudo apt-get install awesome awesome-extra notify-send xautolock i3lock acpi
 
 # backup config
 rm -rf ~/.config/awesome.bck &>> install_awesome.log
