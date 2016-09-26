@@ -33,11 +33,12 @@ if ! grep -q  "$the_ppa" "/etc/apt/sources.list" "/etc/apt/sources.list.d/*"; th
 fi
 
 sudo apt-get update
+INSTALL_CMD="sudo apt-get --ignore-missing install "
 
 
 
 
-sudo apt-get install google-chrome-stable
+$INSTALL_CMD google-chrome-stable
 
 
 # install everpad
@@ -47,22 +48,22 @@ sudo apt-get install google-chrome-stable
 
 ## Aplikace
 
-sudo apt-get install nautilus-dropbox
-## dropbox 
+$INSTALL_CMD nautilus-dropbox
+## dropbox
 dropbox start -i
 
 
 echo "apt-get install ..."
-sudo apt-get install git libreoffice libreoffice-l10n-cs nautilus-dropbox 
-sudo apt-get install imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 
-sudo apt-get install mc xfce4-screenshooter exuberant-ctags gitk cups-pdf 
-sudo apt-get install nautilus keepass2 kupfer vlc 
-sudo apt-get install gtk-recordmydesktop runsnakerun ranger w3m w3m-img 
-sudo apt-get install caca-utils atool highlight mediainfo xpdf arandr g++ 
-sudo apt-get install libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog 
-sudo apt-get install sshfs fuse pycharm-community arandr
-sudo apt-get install texlive-full texlive-lang-czechslovak setup sshfs
-sudo apt.get install keepassx
+$INSTALL_CMD git libreoffice libreoffice-l10n-cs nautilus-dropbox \
+imagej git cmake cmake-curses-gui vim vim-gtk vim-dbg i3 \
+mc xfce4-screenshooter exuberant-ctags gitk cups-pdf \
+nautilus keepass2 kupfer vlc \
+gtk-recordmydesktop runsnakerun ranger w3m w3m-img \
+caca-utils atool highlight mediainfo xpdf arandr g++ \
+libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog \
+sshfs fuse pycharm-community arandr \
+texlive-full texlive-lang-czechslovak setup sshfs \
+keepassx
 
 echo "programming packages"
 
@@ -93,19 +94,19 @@ fi
 # sudo apt-get install hh
 
 # basic vim
-sudo apt-get install vim
+$INSTALL_CMD install vim
 # install neovim
-sudo apt-get install software-properties-common
+$INSTALL_CMD software-properties-common
 
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update
-sudo apt-get install neovim
+$INSTALL_CMD neovim
 
 # neovim - python modules
-sudo apt-get install python-dev python-pip python3-dev python3-pip
+$INSTALL_CMD install python-dev python-pip python3-dev python3-pip
 
-# bash interpret 
-sudo apt-get install fish
+# bash interpret
+$INSTALL_CMD fish
 
 
 
