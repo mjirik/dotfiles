@@ -495,4 +495,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- dropbox
 -- awful.util.spawn("dropbox start")
+--
+--
+
+
+require("mykeys")
 require("autostart")

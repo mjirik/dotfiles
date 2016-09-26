@@ -68,4 +68,5 @@ audio_controller = "pavucontrol"
 -- show_sysmon_widgets = true
 -- update interval for sysmon widgets, every X seconds
 -- sysmon_update_intervall = 2
+--
 

@@ -27,9 +27,10 @@ i3lock -i /tmp/screen_locked.png
 string=`acpi`
 if [[ $string == *"0"* ]]
 then
-    sleep 30
+    # tady by se měl dít rozkaz ke spánku
+    echo "go sleep in 30 minutes"
 fi
 
 # Turn the screen off after a delay.
-pgrep i3lock && xset dpms force off
+sleep 1; pgrep i3lock && xset dpms force off
 
