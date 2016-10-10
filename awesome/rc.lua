@@ -142,9 +142,12 @@ volwidget:buttons(awful.util.table.join(
 -- mysystray = widget({ type = "systray" })
 
 local acpi_result = io.popen("acpi 2>&1"):read("*a")
+
 if  string.find(acpi_result, "No support") ~= nil then
     -- there is no battery
+    local use_battery_widget = false
 else
+    local use_battery_widget = true
     batterywidget = wibox.widget.textbox()
     batterywidget:set_text(" | Battery | ")
     batterywidgettimer = timer({ timeout = 5 })
@@ -239,7 +242,9 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(volwidget)
-    right_layout:add(batterywidget)
+    if use_battery_widget then
+        right_layout:add(batterywidget)
+    end
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -394,8 +399,8 @@ clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
-
-require("mykeys")
+-- TODO check mykeys
+-- require("mykeys")
 -- Set keys
 root.keys(globalkeys)
 -- }}}
