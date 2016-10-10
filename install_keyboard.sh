@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 #
 # install_keyboard.sh
 # Copyright (C) 2015 mjirik <mjirik@mjirik-Latitude-E6520>
@@ -18,6 +18,10 @@ sudo udevadm control --reload
 
 # Rozložení
 
+# backup
+mkdir ~/tmp/keyboard_backup
+cp -f /usr/share/X11/xkb/symbols/cz ~/tmp/keyboard_backup/
+cp -f /usr/share/X11/xkb/rules/evdev.xml ~/tmp/keyboard_backup/
 sudo cp $actualdir/keyboard/cz /usr/share/X11/xkb/symbols/cz
 sudo cp $actualdir/keyboard/evdev.xml /usr/share/X11/xkb/rules/evdev.xml
 

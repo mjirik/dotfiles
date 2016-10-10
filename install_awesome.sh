@@ -6,7 +6,7 @@
 # Distributed under terms of the MIT license.
 #
 
-INSTALL_CMD="sudo apt-get --ignore-missing install "
+INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
 $INSTALL_CMD awesome awesome-extra xautolock i3lock acpi libnotify-bin notify-send
 # old ubuntu distros 14.04
 # libnotify-bin

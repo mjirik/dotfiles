@@ -33,7 +33,7 @@ if ! grep -q  "$the_ppa" "/etc/apt/sources.list" "/etc/apt/sources.list.d/*"; th
 fi
 
 sudo apt-get update
-INSTALL_CMD="sudo apt-get --ignore-missing install "
+INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
 
 
 
