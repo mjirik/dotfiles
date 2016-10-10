@@ -141,17 +141,22 @@ volwidget:buttons(awful.util.table.join(
 -- Create a systray
 -- mysystray = widget({ type = "systray" })
 
-batterywidget = wibox.widget.textbox()
-batterywidget:set_text(" | Battery | ")
-batterywidgettimer = timer({ timeout = 5 })
-batterywidgettimer:connect_signal("timeout",
-  function()
-    fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
-    batterywidget:set_text(" |" .. fh:read("*l") .. " | ")
-    fh:close()
-  end
-)
-batterywidgettimer:start()
+local acpi_result = io.popen("acpi 2>&1"):read("*a")
+if  string.find(acpi_result, "No support") ~= nil then
+    -- there is no battery
+else
+    batterywidget = wibox.widget.textbox()
+    batterywidget:set_text(" | Battery | ")
+    batterywidgettimer = timer({ timeout = 5 })
+    batterywidgettimer:connect_signal("timeout",
+    function()
+        fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
+        batterywidget:set_text(" |" .. fh:read("*l") .. " | ")
+        fh:close()
+    end
+    )
+    batterywidgettimer:start()
+end
 
 
 -- Create a wibox for each screen and add it
