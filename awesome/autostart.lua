@@ -51,11 +51,25 @@ awful.util.spawn('xautolock' .. ' -time ' ..  screen_autolock_time
 -------------------------------------------------------
 
 awful.util.spawn("dropbox start")
+
+-- keyboard setup
 awful.util.spawn("setxkbmap cz basic0")
+-- numlock on
+awful.util.spawn('numlockx')
+
 -- network applet
 awful.util.spawn("nm-applet")
+
 -- printer applet
 awful.util.spawn('system-config-printer-applet')
+
+-- synology cloud station
+awful.util.spawn('synology-cloud-station-drive')
+
+
+
+
+-- Fallowing lines does not work
 
 -- most importantly load the Xresources file for all X configs
 -- (Xterm, urvxt, etc)
