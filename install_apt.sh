@@ -73,7 +73,7 @@ echo "programming packages"
 # python-ipdb
 
 # install mendeley
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' *mendeley*|grep "install ok installed")
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' *mendeley* | grep "install ok installed")
 echo Checking for somelib: $PKG_OK
 if [ "" == "$PKG_OK" ]; then
   echo "installing mendeley"
@@ -109,7 +109,11 @@ $INSTALL_CMD install python-dev python-pip python3-dev python3-pip
 $INSTALL_CMD fish
 # this is problematic due to symbol $. It is interpreted by bash first and 
 # there is no fish_user_path environment variable in bash
-fish -c "set -U fish_user_paths ~/miniconda2/bin/ $fish_user_path "
+if [ -d "~/miniconda/bin" ]; then
+    fish -c "set -U fish_user_paths ~/miniconda/bin/ $fish_user_path "
+elif [ -d "~/miniconda2/bin" ]; then
+    fish -c "set -U fish_user_paths ~/miniconda2/bin/ $fish_user_path "
+fi
 
 
 
