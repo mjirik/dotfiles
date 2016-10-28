@@ -105,8 +105,11 @@ $INSTALL_CMD neovim
 # neovim - python modules
 $INSTALL_CMD install python-dev python-pip python3-dev python3-pip
 
-# bash interpret
+# shell interpret
 $INSTALL_CMD fish
+# this is problematic due to symbol $. It is interpreted by bash first and 
+# there is no fish_user_path environment variable in bash
+fish -c "set -U fish_user_paths ~/miniconda2/bin/ $fish_user_path "
 
 
 
