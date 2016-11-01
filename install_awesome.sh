@@ -20,5 +20,5 @@ rm -rf ~/.config/awesome &>> install_awesome.log
 mkdir ~/.config/ &>> install_awesome.log
 
 # awesome setup
-ln -s `pwd`/awesome "$HOME/.config/awesome"
+ln -s `pwd`/config/awesome "$HOME/.config/awesome"
 # ln -s $actualdir/awesome/locker.sh ~/.config/awesome
