@@ -93,6 +93,11 @@ fi
 # sudo apt-get update
 # sudo apt-get install hh
 
+# ranger
+
+rm -rf ~/.config/ranger &>> install_apt.log
+ln -s `pwd`/config/ranger "$HOME/.config/ranger" &> install_apt.log
+
 # basic vim
 $INSTALL_CMD install vim
 # install neovim
