@@ -17,7 +17,7 @@ actualdir=`pwd`
 VERBOSE=false
 HELP=false
 DRY_RUN=false
-STACK_SIZE=0
+# STACK_SIZE=0
 
 INSTALL_ALL=true
 INSTALL_NORMAL=false
@@ -28,7 +28,7 @@ while true; do
     -v | --verbose ) VERBOSE=true; shift ;;
     -h | --help )    HELP=true; shift ;;
     -n | --dry-run ) DRY_RUN=true; shift ;;
-    -s | --stack-size ) STACK_SIZE="$2"; shift; shift ;;
+    # -s | --stack-size ) STACK_SIZE="$2"; shift; shift ;;
     normal ) INSTALL_NORMAL=true; shift ;;
     ranger ) INSTALL_RANGER=true; shift ;;
     -- ) shift; break ;;
@@ -36,30 +36,9 @@ while true; do
   esac
 done
 
-echo VERBOSE=$VERBOSE
-echo HELP=$HELP
-echo DRY_RUN=$DRY_RUN
-echo STACK_SIZE=$STACK_SIZE
-# while getopts k:b:c flag; do
-#   case $flag in
-#     k)
-#       echo "-a used: $OPTARG";
-#       ;;
-#     b)
-#       echo "-b used: $OPTARG";
-#       ;;
-#     c)
-#       echo "-c used";
-#       ;;
-#     ?)
-#       exit;
-#       ;;
-#   esac
-# done
-#
-# shift $(( OPTIND - 1 ));
-#
-
+# echo VERBOSE=$VERBOSE
+# echo HELP=$HELP
+# echo DRY_RUN=$DRY_RUN
 
 INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
 
