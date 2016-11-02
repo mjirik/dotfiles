@@ -347,16 +347,16 @@ clientkeys = awful.util.table.join(
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
-        end),
+        end)
 
-    awful.key(
-        {},
-        "Print",
-        function()
-            -- awful.util.spawn("gnome-screenshot")
-            awful.util.spawn("gnome-screenshot --interactive")
-        end
-    )
+    -- awful.key(
+    --     {},
+    --     "Print",
+    --     function()
+    --         -- awful.util.spawn("gnome-screenshot")
+    --         awful.util.spawn("gnome-screenshot --interactive")
+    --     end
+    -- )
 )
 
 -- Bind all key numbers to tags.
@@ -409,7 +409,7 @@ clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 -- TODO check mykeys
--- require("mykeys")
+require("mykeys")
 -- Set keys
 root.keys(globalkeys)
 -- }}}

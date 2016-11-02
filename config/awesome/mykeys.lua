@@ -6,6 +6,8 @@
 -- Distributed under terms of the MIT license.
 --
 
+local awful = require("awful")
+require("awful.util")
 
 globalkeys = awful.util.table.join(globalkeys,
 -- bind PrintScrn to capture a screen
