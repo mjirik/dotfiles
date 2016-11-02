@@ -12,6 +12,7 @@
 
 
 actualdir=`pwd`
+NARGS=$#
 
 
 VERBOSE=false
@@ -19,9 +20,9 @@ HELP=false
 DRY_RUN=false
 # STACK_SIZE=0
 
-INSTALL_ALL=true
 INSTALL_NORMAL=false
-INSTALL_RANGER=ranger
+INSTALL_RANGER=false
+INSTALL_FISH=false
 
 while true; do
   case "$1" in
@@ -31,6 +32,7 @@ while true; do
     # -s | --stack-size ) STACK_SIZE="$2"; shift; shift ;;
     normal ) INSTALL_NORMAL=true; shift ;;
     ranger ) INSTALL_RANGER=true; shift ;;
+    fish ) INSTALL_FISH=true; shift ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
@@ -39,10 +41,18 @@ done
 # echo VERBOSE=$VERBOSE
 # echo HELP=$HELP
 # echo DRY_RUN=$DRY_RUN
+echo $NARGS
+
+if [[ $NARGS -eq 0 ]] ; then
+    INSTALL_ALL=true
+    echo "install all"
+fi
+# if $INSTALL_ALL ; then
+#     INSTA
 
 INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
 
-if $INSTALL_NORMAL; then
+if [ $INSTALL_NORMAL ] || [ $INSTALL_ALL ]  ; then
 
     #stáhnout deb
     #přidat klíč
@@ -140,6 +150,19 @@ if $INSTALL_NORMAL; then
     # neovim - python modules
     $INSTALL_CMD install python-dev python-pip python3-dev python3-pip
 
+
+
+fi
+
+if [ $INSTALL_RANGER] || [ $INSTALL_ALL ]  ; then
+    $INSTALL_CMD ranger
+    # w3m w3m-img caca-utils atool highlight mediainfo xpdf
+    # ranger
+    rm -rf ~/.config/ranger &>> install_apt.log
+    ln -s `pwd`/config/ranger "$HOME/.config/ranger" &> install_apt.log
+fi
+
+if [ $INSTALL_FISH ] || [ $INSTALL_ALL ]  ; then
     # shell interpret
     $INSTALL_CMD fish
     # this is problematic due to symbol $. It is interpreted by bash first and 
@@ -149,15 +172,4 @@ if $INSTALL_NORMAL; then
     elif [ -d "~/miniconda2/bin" ]; then
         fish -c "set -U fish_user_paths ~/miniconda2/bin/ $fish_user_path "
     fi
-
-
 fi
-
-if $INSTALL_RANGER ; then
-    $INSTALL_CMD ranger
-    # w3m w3m-img caca-utils atool highlight mediainfo xpdf
-    # ranger
-    rm -rf ~/.config/ranger &>> install_apt.log
-    ln -s `pwd`/config/ranger "$HOME/.config/ranger" &> install_apt.log
-fi
-
