@@ -23,6 +23,8 @@ DRY_RUN=false
 INSTALL_NORMAL=false
 INSTALL_RANGER=false
 INSTALL_FISH=false
+INSTALL_AWESOME=false
+INSTALL_ALL=false
 
 while true; do
   case "$1" in
@@ -33,26 +35,35 @@ while true; do
     normal ) INSTALL_NORMAL=true; shift ;;
     ranger ) INSTALL_RANGER=true; shift ;;
     fish ) INSTALL_FISH=true; shift ;;
+    awesome ) INSTALL_AWESOME=true; shift ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
 done
 
-# echo VERBOSE=$VERBOSE
-# echo HELP=$HELP
-# echo DRY_RUN=$DRY_RUN
-echo $NARGS
-
 if [[ $NARGS -eq 0 ]] ; then
     INSTALL_ALL=true
-    echo "install all"
 fi
+
+if $VERBOSE ; then
+    echo NARGS=$NARGS
+    echo VERBOSE=$VERBOSE
+    echo HELP=$HELP
+    echo DRY_RUN=$DRY_RUN
+    echo INSTALL_AWESOME=$INSTALL_AWESOME
+    echo INSTALL_NORMAL=$INSTALL_NORMAL
+    echo INSTALL_RANGER=$INSTALL_RANGER
+    echo INSTALL_FISH=$INSTALL_FISH
+    echo INSTALL_ALL=$INSTALL_ALL
+fi
+
 # if $INSTALL_ALL ; then
 #     INSTA
 
 INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
 
-if [ $INSTALL_NORMAL ] || [ $INSTALL_ALL ]  ; then
+if $INSTALL_NORMAL || $INSTALL_ALL ; then
+    echo "installing normal..."
 
     #stáhnout deb
     #přidat klíč
@@ -154,7 +165,11 @@ if [ $INSTALL_NORMAL ] || [ $INSTALL_ALL ]  ; then
 
 fi
 
-if [ $INSTALL_RANGER] || [ $INSTALL_ALL ]  ; then
+if $INSTALL_AWESOME || $INSTALL_ALL ; then
+    ./install_awesome.sh
+fi
+
+if $INSTALL_RANGER || $INSTALL_ALL ; then
     $INSTALL_CMD ranger
     # w3m w3m-img caca-utils atool highlight mediainfo xpdf
     # ranger
@@ -162,7 +177,7 @@ if [ $INSTALL_RANGER] || [ $INSTALL_ALL ]  ; then
     ln -s `pwd`/config/ranger "$HOME/.config/ranger" &> install_apt.log
 fi
 
-if [ $INSTALL_FISH ] || [ $INSTALL_ALL ]  ; then
+if $INSTALL_FISH || $INSTALL_ALL ; then
     # shell interpret
     $INSTALL_CMD fish
     # this is problematic due to symbol $. It is interpreted by bash first and 

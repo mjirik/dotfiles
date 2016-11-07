@@ -6,6 +6,7 @@
 # Distributed under terms of the MIT license.
 #
 
+echo "installing awesome..."
 INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
 $INSTALL_CMD awesome awesome-extra xautolock i3lock acpi libnotify-bin notify-send
 # old ubuntu distros 14.04
