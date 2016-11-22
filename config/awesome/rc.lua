@@ -143,11 +143,13 @@ volwidget:buttons(awful.util.table.join(
 
 local acpi_result = io.popen("acpi 2>&1"):read("*a")
 
+local use_battery_widget = true
 if  string.find(acpi_result, "No support") ~= nil then
     -- there is no battery
     local use_battery_widget = false
-else
-    local use_battery_widget = true
+end
+
+if use_battery_widget then
     batterywidget = wibox.widget.textbox()
     batterywidget:set_text(" | Battery | ")
     batterywidgettimer = timer({ timeout = 5 })
@@ -243,6 +245,7 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(volwidget)
     if use_battery_widget then
+    -- if true then
         right_layout:add(batterywidget)
     end
     right_layout:add(mytextclock)
