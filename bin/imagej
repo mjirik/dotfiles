@@ -1,0 +1,10 @@
+#! /bin/sh
+#
+# imagej.sh
+# Copyright (C) 2016 mjirik <mjirik@hp-mjirik>
+#
+# Distributed under terms of the MIT license.
+#
+
+
+java -jar /usr/share/java/ij.jar -ijpath $HOME/.imagej
