@@ -186,14 +186,21 @@ if $INSTALL_RANGER || $INSTALL_ALL ; then
 fi
 
 if $INSTALL_FISH || $INSTALL_ALL ; then
+    echo "Installing fish..."
     # shell interpret
     $INSTALL_CMD fish
     # this is problematic due to symbol $. It is interpreted by bash first and 
     # there is no fish_user_path environment variable in bash
-    if [ -d "~/miniconda/bin" ]; then
-        fish -c "set -U fish_user_paths ~/miniconda/bin/ $fish_user_path "
-    elif [ -d "~/miniconda2/bin" ]; then
-        fish -c "set -U fish_user_paths ~/miniconda2/bin/ $fish_user_path "
+    if hash conda 2>/dev/null; then
+        echo "Command 'conda' works fine. No need to add to paths."
+    else
+        if [ -d "$HOME/miniconda/bin/" ]; then
+            echo "miniconda found"
+            fish -c "set -U fish_user_paths ~/miniconda/bin/ \$fish_user_paths "
+        elif [ -d "$HOME/miniconda2/bin/" ]; then
+            echo "miniconda2 found"
+            fish -c "set -U fish_user_paths ~/miniconda2/bin/ \$fish_user_paths "
+        fi
     fi
-    fish -c "set -U fish_user_paths ~/bin/ $fish_user_path "
+    fish -c "set -U fish_user_paths ~/bin/ \$fish_user_paths "
 fi
