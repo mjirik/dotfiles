@@ -187,6 +187,8 @@ fi
 
 if $INSTALL_FISH || $INSTALL_ALL ; then
     echo "Installing fish..."
+    sudo add-apt-repository ppa:fish-shell/release-2
+    sudo apt-get update
     # shell interpret
     $INSTALL_CMD fish
     # this is problematic due to symbol $. It is interpreted by bash first and 
