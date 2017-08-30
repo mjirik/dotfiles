@@ -25,6 +25,7 @@ INSTALL_RANGER=false
 INSTALL_FISH=false
 INSTALL_AWESOME=false
 INSTALL_ALL=false
+INSTALL_BIN=false
 
 while true; do
   case "$1" in
@@ -36,6 +37,7 @@ while true; do
     ranger ) INSTALL_RANGER=true; shift ;;
     fish ) INSTALL_FISH=true; shift ;;
     awesome ) INSTALL_AWESOME=true; shift ;;
+    bin ) INSTALL_BIN=true; shift ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
@@ -55,12 +57,18 @@ if $VERBOSE ; then
     echo INSTALL_RANGER=$INSTALL_RANGER
     echo INSTALL_FISH=$INSTALL_FISH
     echo INSTALL_ALL=$INSTALL_ALL
+    echo INSTALL_BIN=$INSTALL_BIN
 fi
 
 # if $INSTALL_ALL ; then
 #     INSTA
 
 INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
+
+if $INSTALL_BIN || $INSTALL_ALL ; then
+    rm -rf ~/bin &>> install_apt.log
+    ln -s `pwd`/bin "$HOME/bin" &> install_apt.log
+fi
 
 if $INSTALL_NORMAL || $INSTALL_ALL ; then
     echo "installing normal..."
@@ -178,13 +186,23 @@ if $INSTALL_RANGER || $INSTALL_ALL ; then
 fi
 
 if $INSTALL_FISH || $INSTALL_ALL ; then
+    echo "Installing fish..."
+    sudo add-apt-repository ppa:fish-shell/release-2
+    sudo apt-get update
     # shell interpret
     $INSTALL_CMD fish
     # this is problematic due to symbol $. It is interpreted by bash first and 
     # there is no fish_user_path environment variable in bash
-    if [ -d "~/miniconda/bin" ]; then
-        fish -c "set -U fish_user_paths ~/miniconda/bin/ $fish_user_path "
-    elif [ -d "~/miniconda2/bin" ]; then
-        fish -c "set -U fish_user_paths ~/miniconda2/bin/ $fish_user_path "
+    if hash conda 2>/dev/null; then
+        echo "Command 'conda' works fine. No need to add to paths."
+    else
+        if [ -d "$HOME/miniconda/bin/" ]; then
+            echo "miniconda found"
+            fish -c "set -U fish_user_paths ~/miniconda/bin/ \$fish_user_paths "
+        elif [ -d "$HOME/miniconda2/bin/" ]; then
+            echo "miniconda2 found"
+            fish -c "set -U fish_user_paths ~/miniconda2/bin/ \$fish_user_paths "
+        fi
     fi
+    fish -c "set -U fish_user_paths ~/bin/ \$fish_user_paths "
 fi

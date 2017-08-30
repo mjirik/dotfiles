@@ -144,6 +144,7 @@ volwidget:buttons(awful.util.table.join(
 local acpi_result = io.popen("acpi 2>&1"):read("*a")
 
 local use_battery_widget = true
+-- fallowing lines are not working. Check is now in battery_widget
 if  string.find(acpi_result, "No support") ~= nil then
     -- there is no battery
     local use_battery_widget = false
@@ -156,7 +157,12 @@ if use_battery_widget then
     batterywidgettimer:connect_signal("timeout",
     function()
         fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
-        batterywidget:set_text(" |" .. fh:read("*l") .. " | ")
+        text = fh:read("*l")
+
+        if text == nil then
+        else
+            batterywidget:set_text(" |" .. text .. " | ")
+        end
         fh:close()
     end
     )
