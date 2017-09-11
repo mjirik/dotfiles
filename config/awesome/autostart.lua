@@ -91,10 +91,10 @@ run_once('start-pulseaudio-x11')
 run_once('gnome-sound-applet')
 
 -- network applet
-run_once('nm-applet')
+-- run_once('nm-applet')
 
 -- printer applet
-run_once('system-config-printer-applet')
+-- run_once('system-config-printer-applet')
 
 -- automount (gnome fallback dependency!)
 -- run_once('/usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper')
