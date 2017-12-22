@@ -11,3 +11,6 @@ sftp://pole1.uk.quickconnect.to/ synology
 file:///home/mjirik/data/medical data-medical
 sftp://mjirik@192.168.1.62/Users/mjirik osx
 ftp://jaternice@uk707p01-kme.fav.zcu.cz/ jaternice
+sftp://mjirik@eryx.zcu.cz/afs/zcu.cz/project/departments/ntis/p_mjirik zcu-home
+file:///home/mjirik/Dropbox/science drpx-science
+sftp://mirjirik@tesla2.dia.uniroma3.it/ tesla2 roma3
