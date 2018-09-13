@@ -132,7 +132,8 @@ volwidget = wibox.widget.textbox()
 vicious.register(volwidget, vicious.widgets.volume, " $1% ", 2, "PCM")
 volwidget:buttons(awful.util.table.join(
     awful.button({ }, 1, function () awful.util.spawn("amixer -q set Master toggle", false) end),
-    awful.button({ }, 3, function () awful.util.spawn("xterm -e alsamixer", true) end),
+    -- awful.button({ }, 3, function () awful.util.spawn("xterm -e alsamixer", true) end),
+    awful.button({ }, 3, function () awful.util.spawn("xterm -e pavucontrol", true) end),
     awful.button({ }, 4, function () awful.util.spawn("amixer -q set PCM 1dB+", false) end),
     awful.button({ }, 5, function () awful.util.spawn("amixer -q set PCM 1dB-", false) end)
 ))

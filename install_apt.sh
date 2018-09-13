@@ -5,11 +5,12 @@
 #
 # Distributed under terms of the MIT license.
 #
+# To add new package you have to edit head-packages
 
+# ================head===================
 
-
-
-
+INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
+DOWNLOAD_DIR="~/Stažené/"
 
 actualdir=`pwd`
 NARGS=$#
@@ -18,30 +19,36 @@ NARGS=$#
 VERBOSE=false
 HELP=false
 DRY_RUN=false
+FORCE=false
 # STACK_SIZE=0
 
+# -----------head-packages--------
 INSTALL_NORMAL=false
 INSTALL_RANGER=false
 INSTALL_FISH=false
 INSTALL_AWESOME=false
 INSTALL_ALL=false
 INSTALL_BIN=false
+INSTALL_MENDELEY=false
 
 while true; do
   case "$1" in
     -v | --verbose ) VERBOSE=true; shift ;;
     -h | --help )    HELP=true; shift ;;
     -n | --dry-run ) DRY_RUN=true; shift ;;
+    -f | --force )   FORCE=true; shift ;;
     # -s | --stack-size ) STACK_SIZE="$2"; shift; shift ;;
     normal ) INSTALL_NORMAL=true; shift ;;
     ranger ) INSTALL_RANGER=true; shift ;;
     fish ) INSTALL_FISH=true; shift ;;
     awesome ) INSTALL_AWESOME=true; shift ;;
     bin ) INSTALL_BIN=true; shift ;;
+    mendeley ) INSTALL_MENDELEY=true; shift ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
 done
+
 
 if [[ $NARGS -eq 0 ]] ; then
     INSTALL_ALL=true
@@ -51,6 +58,7 @@ if $VERBOSE ; then
     echo NARGS=$NARGS
     echo VERBOSE=$VERBOSE
     echo HELP=$HELP
+    echo FORCE=$FORCE
     echo DRY_RUN=$DRY_RUN
     echo INSTALL_AWESOME=$INSTALL_AWESOME
     echo INSTALL_NORMAL=$INSTALL_NORMAL
@@ -58,12 +66,25 @@ if $VERBOSE ; then
     echo INSTALL_FISH=$INSTALL_FISH
     echo INSTALL_ALL=$INSTALL_ALL
     echo INSTALL_BIN=$INSTALL_BIN
+    echo INSTALL_MENDELEY=$INSTALL_MENDELEY
 fi
 
-# if $INSTALL_ALL ; then
-#     INSTA
 
-INSTALL_CMD="sudo apt-get --yes --ignore-missing install "
+# ---------------body---------------
+
+if $HELP ; then
+    echo ""
+    echo "install_apt [params][package]"
+    echo ""
+    echo "Parameters"
+    echo "-h help"
+    echo "-v verbose"
+    echo "-n dry run"
+    echo "-f force install some packages (like mendeley)"
+    echo ""
+    exit
+fi
+
 
 if $INSTALL_BIN || $INSTALL_ALL ; then
     rm -rf ~/bin &>> install_apt.log
@@ -80,11 +101,15 @@ if $INSTALL_NORMAL || $INSTALL_ALL ; then
 
 
     # pycharm repo
-    the_ppa="deb http://archive.getdeb.net/ubuntu trusty-getdeb apps"
+    # to obtain ubuntu version use:
+    # lsb_release -sc
+    the_ppa="deb http://archive.getdeb.net/ubuntu $(lsb_release -sc)-getdeb apps"
+    # for trusty it is going to be
+    # the_ppa="deb http://archive.getdeb.net/ubuntu trusty-getdeb apps"
     if ! grep -q "$the_ppa" "/etc/apt/sources.list" "/etc/apt/sources.list.d/*"; then
         echo "install getdeb repo"
         wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
-        sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+        sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu $(lsb_release -sc)-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
     fi
 
     ## Chrome
@@ -138,15 +163,6 @@ if $INSTALL_NORMAL || $INSTALL_ALL ; then
     # python-argcomplete - completation for bash
     # python-ipdb
 
-    # install mendeley
-    PKG_OK=$(dpkg-query -W --showformat='${Status}\n' *mendeley* | grep "install ok installed")
-    echo Checking for somelib: $PKG_OK
-    if [ "" == "$PKG_OK" ]; then
-    echo "installing mendeley"
-    wget http://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
-    sudo dpkg -i mendeleydesktop-latest
-    rm mendeleydesktop-latest
-    fi
     ## mendeley
     # cd ~
     # mkdir tmp
@@ -171,8 +187,6 @@ if $INSTALL_NORMAL || $INSTALL_ALL ; then
 
     # neovim - python modules
     $INSTALL_CMD install python-dev python-pip python3-dev python3-pip
-
-
 
 fi
 
@@ -209,3 +223,20 @@ if $INSTALL_FISH || $INSTALL_ALL ; then
     fi
     fish -c "set -U fish_user_paths ~/bin/ \$fish_user_paths "
 fi
+
+
+if $INSTALL_MENDELEY || $INSTALL_ALL ; then
+    # install mendeley
+    PKG_OK=$(dpkg-query -W --showformat='${Status}\n' *mendeley* | grep "install ok installed")
+    # echo Checking for somelib: $PKG_OK
+    if [ "" == "$PKG_OK" ] || $FORCE ; then
+    echo "Fetching mendeley"
+    wget http://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+    echo "installing the mendeley .deb file"
+    sudo dpkg -i mendeleydesktop-latest
+    rm mendeleydesktop-latest
+    else
+        echo "Stopping process. Mendeley is installed. Use -f for force install."
+    fi
+fi
+
