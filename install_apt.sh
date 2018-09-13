@@ -124,9 +124,12 @@ if $INSTALL_NORMAL || $INSTALL_ALL ; then
     gtk-recordmydesktop runsnakerun ranger w3m w3m-img \
     caca-utils atool highlight mediainfo xpdf arandr g++ \
     libinsighttoolkit4-dev unrar-free p7zip-full numlockx eog \
-    sshfs fuse pycharm-community arandr \
+    sshfs fuse snapd arandr \
     texlive-full texlive-lang-czechslovak setup sshfs \
     keepassx
+    # pycharm-community
+    echo "snap install ..."
+    sudo snap install pycharm-community --classic
 
     echo "programming packages"
 
